@@ -1,92 +1,182 @@
-/* Global Styles */
+/* Variáveis de cores - mantendo seu esquema original */
+:root {
+  --primary-color: #ff1b7b;
+  --secondary-color: #1ABC9C;
+  --text-color: white;
+  --background-color: black;
+  --border-radius: 8px;
+}
+
+/* Reset e estilos globais - mantendo sua base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: black;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    position: relative;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Header - substituindo o .logo */
+.header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.logo {
+  max-width: 150px;
+  width: auto;
+}
+
+/* Main content - substituindo o .container */
+.main {
+  flex: 1;
+  background: 
+    linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+    url('https://investidorsardinha.r7.com/wp-content/uploads/2021/10/won-sul-coreano-como-usar-a-moeda-da-coreia-do-sul-em-viagens.jpeg.webp') 
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conversor container - substituindo o .content */
+.conversor-container {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.conversor-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.conversor-description {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Form styles - substituindo o .input-container */
+.conversor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-input,
+.form-select {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.3);
+}
+
+/* Button styles - mantendo seu estilo */
+.conversor-button {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius);
+  width: 100%;
+}
+
+.conversor-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Resultado - mantendo seu estilo */
+.resultado {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius);
+}
+
+/* Footer - mantendo seu estilo */
+.footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header {
+    position: static;
+    text-align: center;
+    padding: 1rem;
   }
   
-  /* Logo Styles */
   .logo {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    max-width: 150px;
-    width: auto;
+    max-width: 120px;
   }
   
-  /* Container with the background image */
-  .container {
-    background: 
-  linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),   url('https://investidorsardinha.r7.com/wp-content/uploads/2021/10/won-sul-coreano-como-usar-a-moeda-da-coreia-do-sul-em-viagens.jpeg.webp') no-repeat center center/cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .conversor-container {
+    padding: 1.5rem;
   }
   
-  /* Content div for text and button */
-  .content {
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px 40px;
-    border-radius: 8px;
+  .conversor-title {
+    font-size: 1.5rem;
   }
   
-  .content h2 {
-    margin-bottom: 20px;
+  .conversor-description {
+    font-size: 1rem;
   }
   
-  /* Button Styles */
-  button {
-    background-color: #ff1b7b;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .form-input,
+  .form-select {
+    padding: 0.7rem;
   }
   
-  button:hover {
-    background-color: #1ABC9C;
+  .resultado {
+    font-size: 1.2rem;
   }
-  
-  select {
-    padding: 8px;
-    font-size: 1em;
-    margin: 4px 0;
-  }
-  
-  /* Estilo para exibir o resultado */
-  #resultado {
-    font-size: 1.5em;
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
-  /* Container para input e select */
-  .input-container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  
-  /* Estilos para input e select */
-  input, select {
-    padding: 8px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Footer Styles */
-  footer {
-    background-color: #ff1b7b;
-    text-align: center;
-    padding: 10px;
-  }
-  
+}
+
+/* Acessibilidade - classes utilitárias */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
